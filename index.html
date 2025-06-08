@@ -1,0 +1,1531 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ramdona</title>
+  <link href="dist/output.css" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="https://website-widgets.pages.dev/dist/sienna.min.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+</head>
+
+<style>
+  #particles-js canvas {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    z-index: 0 !important;
+  }
+</style>
+
+<body class="bg-[#F5F5F5] dark:bg-primary min-h-screen flex flex-col overflow-x-hidden">
+  <main class="flex-grow">
+    <!-- start header-->
+    <header
+      class="fixed top-0 left-0 right-0 backdrop-blur-lg bg-opacity-60 dark:bg-transparent transition-all duration-300 z-[99]">
+      <nav class="max-w-7xl mx-auto px-5 py-4">
+        <div class="flex items-center justify-between">
+          <!-- Logo -->
+          <a href="#" class="text-white font-bold text-lg flex items-center gap-2"> <!-- Gap diperkecil -->
+            <img src="img/landing_.jpeg" alt="Logo" class="h-12 w-auto rounded-full">
+            <p class="text-sm">Ramdona</p>
+          </a>
+
+          <!-- Menu untuk desktop (hidden di mobile) -->
+          <div class="hidden md:flex space-x-6"> <!-- Jarak antar menu diperkecil -->
+            <a href="#home" class="text-black dark:text-white hover:text-gray-400 px-4 cursor-pointer text-sm">Home</a>
+            <!-- Ukuran teks diperkecil -->
+            <a href="#about" class="text-black dark:text-white hover:text-gray-400 px-4 cursor-pointer text-sm">About</a>
+            <a href="#Experience" class="text-black dark:text-white hover:text-gray-400 px-4 cursor-pointer text-sm">Experience</a>
+            <a href="#project" class="text-black dark:text-white hover:text-gray-400 px-4 cursor-pointer text-sm">Project</a>
+            <a href="#skill" class="text-black dark:text-white hover:text-gray-400 px-4 cursor-pointer text-sm">Skill</a>
+            <a href="#certificate" class="text-black dark:text-white hover:text-gray-400 px-4 cursor-pointer text-sm">Certificate</a>
+            <a href="#quotes" class="text-black dark:text-white hover:text-gray-400 px-4 cursor-pointer text-sm">Quotes</a>
+            <a href="#contact" class="text-black dark:text-white hover:text-gray-400 px-4 cursor-pointer text-sm">Contact</a>
+            <li class="flex items-center px-2">
+              <a id="toggleDark"
+                class="flex items-center justify-center text-yellow-300 dark:text-slate-50 hover:scale-110 transition-transform duration-300 cursor-pointer">
+                <i id="darkIcon" class='bx bx-moon text-2xl'></i>
+              </a>
+            </li>
+          </div>
+
+          <!-- Tombol menu mobile (hanya muncul di mobile) -->
+          <div class="md:hidden">
+            <button id="mobile-menu-button" class="text-white text-xl focus:outline-none cursor-pointer">
+              <i id="menu-icon" class="bx bx-menu"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Menu mobile (hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-12 right-2 bg-white py-1 rounded-lg">
+          <!-- Padding dan posisi diperkecil -->
+          <a href="#home" class="block text-black py-1 px-4 hover:bg-gray-700 text-sm">Home</a>
+          <!-- Ukuran teks dan padding diperkecil -->
+          <a href="#about" class="block text-black py-1 px-4 hover:bg-gray-700 text-sm">About</a>
+          <a href="#project" class="block text-black py-1 px-4 hover:bg-gray-700 text-sm">Project</a>
+          <a href="#skill" class="block text-black py-1 px-4 hover:bg-gray-700 text-sm">Skill</a>
+          <a href="#certificate" class="block text-black py-1 px-4 hover:bg-gray-700 text-sm">Certificate</a>
+          <a href="#contact" class="block text-black py-1 px-4 hover:bg-gray-700 text-sm">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <script>
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const menuIcon = document.getElementById("menu-icon");
+
+      // Toggle mobile menu visibility
+      mobileMenuButton.addEventListener("click", function () {
+        mobileMenu.classList.toggle("hidden");
+        menuIcon.classList.toggle("bx-menu");
+        menuIcon.classList.toggle("bx-x");
+      });
+
+      // Close mobile menu if clicked outside
+      document.addEventListener("click", function (e) {
+        if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+          mobileMenu.classList.add("hidden");
+          menuIcon.classList.remove("bx-x");
+          menuIcon.classList.add("bx-menu");
+        }
+      });
+
+      // Add blur effect on scroll
+      const header = document.querySelector("header");
+      window.addEventListener("scroll", function () {
+        if (window.scrollY > 100) {
+          header.classList.add("backdrop-blur-lg", "bg-opacity-60");
+        } else {
+          header.classList.remove("backdrop-blur-lg", "bg-opacity-60");
+        }
+      });
+
+      // Close mobile menu when a menu item is clicked
+      const menuLinks = mobileMenu.querySelectorAll("a");
+      menuLinks.forEach(link => {
+        link.addEventListener("click", function () {
+          mobileMenu.classList.add("hidden"); // Sembunyikan mobile menu
+          menuIcon.classList.remove("bx-x"); // Kembalikan ikon ke menu
+          menuIcon.classList.add("bx-menu");
+        });
+      });
+    </script>
+    <!-- end header-->
+
+    <!-- Kata Sapaan -->
+
+    <div id="welcomeMessage" class="fixed top-0 left-0 w-full h-full bg-primary flex items-center justify-center z-[1000] opacity-100 transition-opacity duration-700">
+      <div class="text-white p-6 rounded-xl text-center animate-slide-fade-in">
+        <h1 class="text-5xl font-bold mb-2">Hallo, Welcome To Portofolio Ramdona 👋🏻</h1>
+        <p class="text-sm text-gray-300">Please wait a moment...</p>
+      </div>
+    </div>
+
+
+
+
+    <!-- Hero Section -->
+    <section class="pb-2">
+      <div id="home">
+       <div id="particles-js"
+          class="relative overflow-visible w-full min-h-screen flex items-center justify-center pb-4 sm:pb-8"
+          data-aos="fade-up" data-aos-duration="1000">
+          <!-- Radial background effect -->
+          <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-[500px] sm:w-[600px] md:w-[700px] lg:w-[800px] h-[500px] sm:h-[600px] md:h-[700px] lg:h-[800px] rounded-full bg-[radial-gradient(circle,_#00ffb3_0%,_transparent_70%)] opacity-30 pointer-events-none">
+          </div>
+          <!-- Hero content -->
+          <div class="w-full flex flex-col items-center justify-center text-center z-20">
+            <p id="typewriter" class="w-full text-black dark:text-white font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl"></p>
+            <p class="text-teal-400 font-bold text-2xl sm:text-3xl md:text-4xl mt-4">Siti Kamaliah Ramdona</p>
+            <a href="https://drive.google.com/drive/folders/1DZlL2b0X7OVv1nWVTkFjMHLWz2dwKeDm?usp=drive_link" target="_blank"
+              class="px-6 py-2 bg-teal-500 hover:bg-teal-600 text-white font-semibold mt-6 rounded-lg cursor-pointer text-sm sm:text-base">View
+              CV</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION TENTANG SAYA -->
+
+    <section>
+  <div id="about"
+     class="w-full px-4 -mt-28 sm:-mt-36 md:-mt-40 flex justify-center z-20 relative mb-10 sm:mb-4">
+        <div
+          class="bg-black/40 dark:bg-white/10 backdrop-blur-md rounded-xl p-6 sm:p-8 md:p-12 flex flex-col md:flex-row items-center gap-6 md:gap-10 max-w-5xl shadow-xl border border-white/20 text-white">
+
+          <div
+            class="w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-white shadow-lg shrink-0 data" data-aos="flip-left" data-aos-duration="1000">
+            <img src="img/landing_.jpeg" alt="Foto Profil" class="w-full h-full object-cover">
+          </div>
+
+          <div class="text-center md:text-left" data-aos="fade-left" data-aos-duration="1000">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-black dark:text-white">About Me?</h2>
+            <p class="text-base sm:text-lg leading-relaxed text-black dark:text-white">
+              <span class="font- text-teal-400">Front-End is my background. </span><br>
+              I enjoy creating clean and functional interfaces with a strong UI/UX focus. I can also do back-end, data
+              analysis, and graphic design.
+
+              Not only that, I also enjoy making pixel game assets. and until now I am still developing my talent in the
+              field of pixel artist.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-center space-x-4 sm:space-x-6 mt-6 mb-12" data-aos="zoom-in" data-aos-delay="300">
+        <a href="https://www.instagram.com/laughterluv_?igsh=MWd3N2hjaDI4MHRsdQ=="
+          class="text-black dark:text-white text-2xl sm:text-3xl hover:scale-110 hover:shadow-lg transition-all duration-300"
+          target="_blank">
+          <i class="bx bxl-instagram"></i>
+        </a>
+        <a href="https://youtube.com/@sitikamaliahramdhona1029?si=FLcXbe0QB3aV-e1J"
+          class="text-black dark:text-white text-2xl sm:text-3xl hover:scale-110 hover:shadow-lg transition-all duration-300"
+          target="_blank">
+          <i class="bx bxl-youtube"></i>
+        </a>
+        <a href="https://x.com/RamdonaK3954"
+          class="text-black dark:text-white text-2xl sm:text-3xl hover:scale-110 hover:shadow-lg transition-all duration-300"
+          target="_blank">
+          <iconify-icon icon="simple-icons:x" class="text-black dark:text-white text-3xl"></iconify-icon>
+        </a>
+        <a href="https://www.linkedin.com/in/ramdona-kamaliah-111b46334/"
+          class="text-black dark:text-white text-2xl sm:text-3xl hover:scale-110 hover:shadow-lg transition-all duration-300"
+          target="_blank">
+          <i class="bx bxl-linkedin"></i>
+        </a>
+      </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+      particlesJS.load('particles-js', 'particles.json');
+    </script>
+
+    <!-- SECTION EXPERIENCE -->
+
+    <section id="Experience" class=" pb-8 pt-6 relative overflow-hidden" x-data="{ tab: 'soft' }">
+      <div class="container relative">
+        <div class="w-full px-4">
+          <div class="max-w-xl mx-auto text-center mb-16">
+            <h2
+              class="text-3xl font-bold mb-4 bg-gradient-to-r from-lime-400 via-emerald-500 to-teal-600 bg-clip-text text-transparent">
+              Experience
+            </h2>
+
+            <p class="font-medium text-black dark:text-white md:text-lg">
+              Studying at SMK since 2023 has given me many valuable experiences. From soft skills to hard skills
+            </p>
+          </div>
+        </div>
+
+        <!-- Tombol Tab -->
+        <div class="w-full max-w-5xl mx-auto px-4 flex flex-col items-center gap-4 mb-8">
+
+          <!-- Pendidikan -->
+          <div class="w-full" data-aos="fade-up"
+     data-aos-anchor-placement="top-center" data-aos-duration="1000">
+            <button
+              class="cursor-pointer tab-btn flex justify-between items-center w-full px-6 py-4 bg-black/20 dark:bg-white/10 border border-teal-400 rounded-full text-white hover:bg-teal-700 transition"
+              onclick="toggleTab('pendidikan')">
+              <span class="flex items-center gap-3 text-black dark:text-white">
+                <iconify-icon icon="mdi:school-outline" class="text-xl text-black dark:text-white"></iconify-icon>
+                Education
+              </span>
+              <iconify-icon id="arrow-pendidikan" icon="mdi:chevron-down"></iconify-icon>
+            </button>
+            <div id="content-pendidikan"
+              class="mt-2 text-black dark:text-white text-sm hidden bg-white/5 p-4 rounded-xl border border-white/10">
+              <strong>SMK Negeri 1 Ciomas –
+                Software & GIM Development (PPLG), 2023–2025</strong>
+              <hr class="my-2 border-teal-400">
+
+              <ul class="list-disc pl-5 space-y-1 text-black dark:text-white">
+                <li>Learn the basics of programming, website development, and database management.</li>
+                <li>Using various tools such as Visual Studio Code, Git, GitHub, Laravel, Adobe Illustrator, Ibis Paint,
+                  Tailwind CSS, etc.</li>
+                <li>Developed several projects such as portfolio website, employee management system, Mobile
+                  Application, etc.</li>
+                <li>Studied the field of graphic design and pixel art for the creation of game assets and user
+                  interfaces.</li>
+                <li>Learn and implement digital marketing strategies firsthand, from market research to sales execution,
+                  to successfully earning income from your own business.</li>
+                <li>Lead digital marketing projects as a Project Manager, organizing teams, devising marketing
+                  strategies, and directing execution to generate real revenue from sales.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Organisasi -->
+          <div class="w-full" data-aos="fade-up"
+     data-aos-anchor-placement="top-center" data-aos-delay="400">
+            <button
+              class="cursor-pointer tab-btn flex justify-between items-center w-full px-6 py-4 bg-white/10 border border-teal-400 rounded-full text-white hover:bg-teal-700 transition"
+              onclick="toggleTab('organisasi')">
+              <span class="flex items-center gap-3 text-black dark:text-white">
+                <iconify-icon icon="mdi:account-group-outline" class="text-xl text-black dark:text-white"></iconify-icon>
+                Organization
+              </span>
+              <iconify-icon id="arrow-pendidikan" icon="mdi:chevron-down"></iconify-icon>
+            </button>
+            <div id="content-organisasi"
+              class="mt-2 text-black dark:text-white text-sm hidden bg-white/5 p-4 rounded-xl border border-white/10">
+              <strong>Experience In Organization, 2023–2025</strong>
+              <hr class="my-2 border-teal-400">
+
+              <ul class="list-disc pl-5 space-y-1">
+                <li>Head of Keputrian Rohis Darul MUttaqin.</li>
+                <li>Head of Karate SMK Negeri 1 Ciomas.</li>
+                <li>Member Of BPH Osis SMK Negeri 1 Ciomas</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Pendidikan Nonformal -->
+          <div class="w-full" data-aos="fade-up"
+     data-aos-anchor-placement="top-center" data-aos-delay="300">
+            <button
+              class="cursor-pointer tab-btn flex justify-between items-center w-full px-6 py-4 bg-white/10 border border-teal-400 rounded-full text-white hover:bg-teal-700 transition"
+              onclick="toggleTab('nonformal')">
+              <span class="flex items-center gap-3 text-black dark:text-white">
+                <iconify-icon icon="mdi:book-open-page-variant-outline" class="text-xl text-black dark:text-white"></iconify-icon>
+                Non-formal education
+              </span>
+              <iconify-icon id="arrow-pendidikan" icon="mdi:chevron-down"></iconify-icon>
+            </button>
+            <div id="content-nonformal"
+              class="mt-2 text-black dark:text-white text-sm hidden bg-black/5 dark:bg-white/5 p-4 rounded-xl border border-white/10">
+              <strong>Non-formal education</strong>
+              <hr class="my-2 border-teal-400">
+
+              <ul class="list-disc pl-5 space-y-1">
+                <li>Take Front-End Programming classes on the Dicoding platform to deepen HTML, CSS, and JavaScript.
+                </li>
+                <li>Learn the basics of graphic design online through Muslimah Design Class via Zoom.</li>
+                <li>Join RevoU's Full Stack Web Development program that covers front-end, back-end, and industry soft
+                  skills.</li>
+                <li>Learn AI & data technology through training from RuangAI, broadening your horizons around the latest
+                  technology trends.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <script>
+          function toggleTab(tabName) {
+            const content = document.getElementById(`content-${tabName}`);
+            const arrow = document.getElementById(`arrow-${tabName}`);
+            const isHidden = content.classList.contains('hidden');
+
+            // Sembunyikan semua dulu
+            document.querySelectorAll('[id^="content-"]').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('[id^="arrow-"]').forEach(el => el.setAttribute('icon', 'mdi:chevron-down'));
+
+            if (isHidden) {
+              content.classList.remove('hidden');
+              arrow.setAttribute('icon', 'mdi:chevron-up');
+            }
+          }
+
+        </script>
+
+    </section>
+
+
+    <!-- END SECTION EXPERIENCE -->
+
+    <!-- Project Section Start -->
+    <section id="project" class="pt-16 pb-32 text-black dark:text-white"data-aos="fade-up-right" data-aos-duration="1000">
+      <div class="container mx-auto px-4">
+        <!-- Judul -->
+        <div class="max-w-5xl mx-auto text-center mb-12">
+          <h2
+            class="text-3xl font-bold mb-4 bg-gradient-to-r from-lime-400 via-emerald-500 to-teal-600 bg-clip-text text-transparent">
+            Project Showcase
+          </h2>
+
+          <p class="text-black dark:text-white text-lg">
+            Click the image below to see the project details.</p>
+        </div>
+
+        <!-- Gambar besar + Deskripsi -->
+        <div
+          class="flex flex-col md:flex-row items-center gap-8 mb-12 border-2 border-[#00ffb3] p-4 rounded-xl min-h-[400px] transition-all duration-500 ease-in-out">
+          <!-- Gambar besar -->
+          <div class="w-full md:w-1/2">
+            <img id="mainImage" src="img/kreavisa-project.png" alt="Project Besar"
+              class="rounded-xl shadow-lg w-full h-auto max-h-[500px] object-contain transition duration-500">
+          </div>
+
+          <!-- Deskripsi -->
+          <div class="w-full md:w-1/2">
+            <h3 id="mainTitle" class="text-2xl font-semibold mb-4">Kreavisa Project</h3>
+            <p id="mainDescription" class="text-black dark:text-white">
+              Website portofolio yang menampilkan karya desain kreatif.
+            </p>
+            <a id="viewProjectBtn" href="#" target="_blank"
+              class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+              style="display: none;">View Project</a>
+          </div>
+          <div id="mainTechIcons" class="flex gap-2 mt-4"></div>
+        </div>
+
+        
+        <!-- Galeri Thumbnail (Slider) -->
+        <section class="relative">
+          <div class="overflow-x-auto scrollbar-hide auto-scroll pb-20 cursor-pointer">
+            <div class="flex gap-4 w-max px-2 py-2 gallery-track">
+              <!-- Data thumbnail -->
+              <div onclick="setMainContent(this)" data-image="img/project-porto.jpg" data-title="Library Project"
+                  data-description="Dynamic Portfolio Website created using Laravel 11 and Tailwind CSS Tools"
+                  data-link="https://github.com/RamdonnaKamaliah/Ramdona.github.io.git" class="gallery-item cursor-pointer">
+                 <img src="img/project-porto.jpg" alt="Library"
+                class="gallery-img rounded-xl shadow-md object-cover w-48 h-32 transition duration-300 hover:scale-105 hover:shadow-xl hover:-translate-y-1 hover:ring-2 hover:ring-green-400">
+              </div>
+
+
+
+              <div onclick="setMainContent(this)" data-image="img/Kreavisa-web.png"
+                data-title="Sistem Management Karyawan, Kreavisa" data-description="Website perpustakaan sekolah..."
+                data-link="#" class="gallery-item cursor-pointer">
+                <img src="img/Kreavisa-web.png" alt="Kreavisa"
+                  class="rounded-xl shadow-md object-cover w-48 h-32 transition duration-300 hover:scale-105 hover:-translate-y-1 hover-ring-2 hover:ring-green-400">
+              </div>
+
+              <div onclick="setMainContent(this)" data-image="img/qode.png"
+                data-title="QODE (Al Qur’an Dan Doa)" data-description="Al-Quran Dan Doa (QODE) is a web aplication created using Flutter(Dart)"
+                data-link="https://drive.google.com/drive/folders/1gW39OQytTUpL4ezADKDy5-xv8KPL_ahL"
+                class="gallery-item cursor-pointer">
+                <img src="img/qode.png" alt="Library"
+                  class="rounded-xl shadow-md object-cover w-48 h-32 transition duration-300 hover:scale-105 hover:-translate-y-1 hover:ring-2 hover:ring-green-400">
+              </div>
+
+              <div onclick="setMainContent(this)" data-image="img/koprasi-desain.jpg" data-title="Library Project"
+                data-description="Website design for school cooperatives made using Figma"
+                data-link="https://www.figma.com/design/uo4k3X42uSSH9TJ7JmOCAG/MockUp?node-id=9-2&t=gCsdXOImRkcr1OkN-0"
+                class="gallery-item cursor-pointer">
+                <img src="img/koprasi-desain.jpg" alt="Library"
+                  class="rounded-xl shadow-md object-cover w-48 h-32 transition duration-300 hover:scale-105 hover:-translate-y-1 hover:ring-2 hover:ring-green-400">
+              </div>
+
+              <!-- buat blog -->
+              <div onclick="setMainContent(this)" data-image="img/qode.png"
+                data-title="Library Project" data-description="Website perpustakaan sekolah..."
+                data-link="https://github.com/namamu/library-project" class="gallery-item cursor-pointer">
+                <img src="img/qode.png" alt="Library"
+                  class="rounded-xl shadow-md object-cover w-48 h-32 transition duration-300 hover:scale-105 hover:-translate-y-1 hover:ring-2 hover:ring-green-300">
+              </div>
+
+              <!-- buat kopi kenangan -->
+              <div onclick="setMainContent(this)"
+                data-image="img/tomorow-coffe.jpg"
+                data-title="Tomorrow Coffee Shop"
+                data-description="A sleek Coffee Shop Website built using HTML, CSS, and JavaScript. Inspired by Shandika Ghalih’s tutorial."
+                data-link="https://ramdonnakamaliah.github.io/tomorowcoffe.github.io/"
+                data-tech="html,css,js"
+                class="gallery-item cursor-pointer">
+              <img src="img/tomorow-coffe.jpg" alt="Tomorrow Coffee"
+                  class="rounded-xl shadow-md object-cover w-48 h-32 transition duration-300 hover:scale-105 hover:translate-y-1 hover:ring-2 hover:ring-green-300">
+            </div>
+
+            </div>
+          </div>
+        </section>
+
+
+
+        <!-- Optional: Hide scrollbar -->
+        <style>
+          .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+          }
+
+          .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+
+          .auto-scroll {
+            white-space: nowrap;
+            overflow-x: auto;
+            scroll-behavior: auto;
+            position: relative;
+          }
+
+          .gallery-track {
+            display: flex;
+            gap: 1rem;
+          }
+
+          .gallery-item {
+            position: relative;
+            z-index: 1;
+          }
+        </style>
+
+
+        <!-- About Section End -->
+
+        <!-- skill Section Start -->
+        <section id="skill" class="pb-8 pt-6 relative overflow-hidden" x-data="{ tab: 'soft' }">
+          <div class="container mx-auto px-4">
+            <div class="max-w-xl mx-auto text-center mb-16">
+              <h2
+                class="text-3xl font-bold mb-4 bg-gradient-to-r from-lime-400 via-emerald-500 to-teal-600 bg-clip-text text-transparent">
+                My Skill
+              </h2>
+              <p class="font-medium text-black dark:text-white md:text-lg">
+                These are some of the languages ​​that I have studied, I use this language to create
+                <span class="font-bold text-black dark:text-white hover:underline">Front-End, Back-End, and Design</span>
+              </p>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-8 pl-8" data-aos="zoom-in-down" data-aos-duration="1000">
+              <!-- Tombol Tab -->
+              <div class="md:w-1/4 flex md:flex-col gap-4 mb-8 md:mb-0">
+                <button
+                  class="cursor-pointer tab-btn px-4 py-2 rounded-xl text-teal-300 hover:bg-gray-700 text-left text-base md:text-2xl w-full"
+                  data-tab="soft">Soft Skills</button>
+                <button
+                  class="cursor-pointer tab-btn px-4 py-2 rounded-xl text-teal-300 hover:bg-gray-700 text-left text-base md:text-2xl w-full"
+                  data-tab="hard">Hard Skills</button>
+                <button
+                  class="cursor-pointer tab-btn active-tab px-4 py-2 rounded-xl text-teal-300 bg-gray-700 text-left text-base md:text-2xl w-full"
+                  data-tab="software">Software Skills</button>
+              </div>
+
+              <!-- Konten Tab -->
+              <div class="flex-1" data-aos="zoom-in-left" data-aos-duration="1000">
+                <!-- Soft Skills -->
+                <div class="tab-content hidden" id="soft">
+                  <div class="grid grid-cols-2 gap-4 text-black dark:text-white text-xl max-w-xl">
+
+                    <!-- Public Speaking -->
+                    <span class="flex items-center gap-2 px-4 py-2 rounded-xl">
+                      <iconify-icon icon="mdi:microphone-variant" style="color: #84cc16;" width="24"
+                        height="24"></iconify-icon>
+                      Public Speaking
+                    </span>
+
+                    <!-- Researching -->
+                    <span class="flex items-center gap-2 px-4 py-2 rounded-xl">
+                      <iconify-icon icon="mdi:book-search-outline" style="color: #fdba74;" width="24"
+                        height="24"></iconify-icon>
+                      Researching
+                    </span>
+
+                    <!-- Leadership -->
+                    <span class="flex items-center gap-2 px-4 py-2 rounded-xl">
+                      <iconify-icon icon="mdi:account-tie-outline" style="color: #818cf8;" width="24"
+                        height="24"></iconify-icon>
+                      Leadership
+                    </span>
+
+                    <!-- Team Management -->
+                    <span class="flex items-center gap-2 px-4 py-2 rounded-xl">
+                      <iconify-icon icon="mdi:account-group" style="color: #22d3ee;" width="24"
+                        height="24"></iconify-icon>
+                      Team Management
+                    </span>
+
+                  </div>
+                </div>
+
+
+                <!-- Hard Skills -->
+                <div class="tab-content hidden" id="hard">
+                  <div class="grid grid-cols-2 gap-4 text-black dark:text-white text-xl max-w-xl text-left">
+                    <!-- UI/UX Design -->
+                    <span class="flex items-center gap-2 px-4 py-2 rounded-xl hover:scale-105 transition duration-300">
+                      <iconify-icon icon="mdi:palette-outline" class="text-pink-400 text-2xl"></iconify-icon>
+                      UI/UX Design
+                    </span>
+
+                    <!-- Front End -->
+                    <span class="flex items-center gap-2 px-4 py-2 rounded-xl hover:scale-105 transition duration-300">
+                      <iconify-icon icon="material-symbols:code" class="text-green-300 text-2xl"></iconify-icon>
+                      Front End
+                    </span>
+
+                    <!-- Back End -->
+                    <span class="flex items-center gap-2 px-4 py-2 rounded-xl hover:scale-105 transition duration-300">
+                      <iconify-icon icon="carbon:ibm-cloud-databases-for-postgresql" style="color: #fcd34d;" width="24"
+                        height="24"></iconify-icon>
+                      Back End
+                    </span>
+
+
+                    <!-- Graphic Design -->
+                    <span class="flex items-center gap-2 px-4 py-2 rounded-xl hover:scale-105 transition duration-300">
+                      <iconify-icon icon="ph:paint-brush-duotone" class="text-red-300 text-2xl"></iconify-icon>
+                      Graphic Design
+                    </span>
+
+                    <!-- Data Analyst -->
+                    <span class="flex items-center gap-2 px-4 py-2 rounded-xl hover:scale-105 transition duration-300">
+                      <iconify-icon icon="mdi:chart-box-outline" class="text-blue-300 text-2xl"></iconify-icon>
+                      Data Analyst
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Software Skills -->
+                <div class="tab-content" id="software">
+                  <div class="relative max-h-[500px]">
+
+                    <!-- blur top (di luar scrollable container) -->
+                    <div
+                      class="pointer-events-none absolute top-0 left-0 w-full h-6 bg-gradient-to-b from-[#1f2937] to-transparent z-10">
+                    </div>
+
+                    <!-- blur bottom -->
+                    <div
+                      class="pointer-events-none absolute bottom-0 left-0 w-full h-6 bg-gradient-to-t from-[#1f2937] to-transparent z-10">
+                    </div>
+
+                    <!-- scrollable area -->
+                    <div class="overflow-y-auto pr-2 scrollbar-hide max-h-[500px] relative z-0">
+                      <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 py-2">
+
+                        <!-- Bootstrap -->
+                     <!-- Bootstrap (4 Bintang - 80%) -->
+                          <div class="bg-gray-700 bg-opacity-30 rounded-2xl p-6 flex flex-col items-center w-full">
+                        <img src="img/skill/bootstrap.svg" alt="Bootstrap" class="w-16 h-16 mb-4">
+                        
+                        <!-- Nama Skill -->
+                        <p class="text-black dark:text-white text-xl text-center mb-1">Bootstrap</p>
+
+                        <!-- Bintang -->
+                        <div class="flex items-center justify-center mb-2">
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                        </div>
+
+                        <!-- Progress bar -->
+                        <div class="w-full">
+                          <div class="w-full bg-gray-300 rounded-full h-2.5 dark:bg-gray-600">
+                            <div class="bg-emerald-400 h-2.5 rounded-full" style="width: 80%"></div>
+                          </div>
+                          <p class="text-sm text-gray-200 mt-1 text-center">80%</p>
+                        </div>
+                      </div>
+
+
+                        <!-- CSS -->
+                        <div class="bg-gray-700 bg-opacity-30 rounded-2xl p-6 flex flex-col items-center">
+                          <img src="img/skill/css.svg" alt="CSS" class="w-16 h-16 mb-4">
+                          <p class="text-black dark:text-white text-xl text-center mb-1">CSS</p>
+
+                        <!-- Bintang -->
+                        <div class="flex items-center justify-center mb-2">
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                        </div>
+
+                        <!-- Progress bar -->
+                        <div class="w-full">
+                          <div class="w-full bg-gray-300 rounded-full h-2.5 dark:bg-gray-600">
+                            <div class="bg-emerald-400 h-2.5 rounded-full" style="width: 90%"></div>
+                          </div>
+                          <p class="text-sm text-gray-200 mt-1 text-center">90%</p>
+                        </div>
+                        </div>
+
+                        <!-- Dart -->
+                        <div class="bg-gray-700 bg-opacity-30 rounded-2xl p-6 flex flex-col items-center">
+                          <img src="img/skill/dart.svg" alt="Dart" class="w-16 h-16 mb-4">
+                          <p class="text-black dark:text-white text-xl text-center">Dart</p>
+                          <div class="flex items-center justify-center mb-2">
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                        </div>
+
+                        <!-- Progress bar -->
+                        <div class="w-full">
+                          <div class="w-full bg-gray-300 rounded-full h-2.5 dark:bg-gray-600">
+                            <div class="bg-emerald-400 h-2.5 rounded-full" style="width: 50%"></div>
+                          </div>
+                          <p class="text-sm text-gray-200 mt-1 text-center">50%</p>
+                        </div>
+                        </div>
+
+                        <!-- Canva -->
+                        <div class="bg-gray-700 bg-opacity-30 rounded-2xl p-6 flex flex-col items-center">
+                          <img src="img/skill/canva.svg" alt="Canva" class="w-16 h-16 mb-4">
+                          <p class="text-black dark:text-white text-xl text-center">Canva</p>
+                          <div class="flex items-center justify-center mb-2">
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                        </div>
+
+                        <!-- Progress bar -->
+                        <div class="w-full">
+                          <div class="w-full bg-gray-300 rounded-full h-2.5 dark:bg-gray-600">
+                            <div class="bg-emerald-400 h-2.5 rounded-full" style="width: 99%"></div>
+                          </div>
+                          <p class="text-sm text-gray-200 mt-1 text-center">99%</p>
+                        </div>
+                        </div>
+
+                        <!-- Javascript -->
+                        <div class="bg-gray-700 bg-opacity-30 rounded-2xl p-6 flex flex-col items-center">
+                          <img src="img/skill/js.svg" alt="Javascript" class="w-16 h-16 mb-4">
+                          <p class="text-black dark:text-white text-xl text-center">Javascript</p>
+                          
+                        <!-- Bintang -->
+                        <div class="flex items-center justify-center mb-2">
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                        </div>
+
+                        <!-- Progress bar -->
+                        <div class="w-full">
+                          <div class="w-full bg-gray-300 rounded-full h-2.5 dark:bg-gray-600">
+                            <div class="bg-emerald-400 h-2.5 rounded-full" style="width: 75%"></div>
+                          </div>
+                          <p class="text-sm text-gray-200 mt-1 text-center">75%</p>
+                        </div>
+                        </div>
+
+                        <!-- Figma -->
+                        <div class="bg-gray-700 bg-opacity-30 rounded-2xl p-6 flex flex-col items-center">
+                          <img src="img/skill/figma.svg" alt="Figma" class="w-16 h-16 mb-4">
+                          <p class="text-black dark:text-white text-xl text-center">Figma</p>
+                          
+                        <!-- Bintang -->
+                        <div class="flex items-center justify-center mb-2">
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                        </div>
+
+                        <!-- Progress bar -->
+                        <div class="w-full">
+                          <div class="w-full bg-gray-300 rounded-full h-2.5 dark:bg-gray-600">
+                            <div class="bg-emerald-400 h-2.5 rounded-full" style="width: 90%"></div>
+                          </div>
+                          <p class="text-sm text-gray-200 mt-1 text-center">90%</p>
+                        </div>
+                        </div>
+
+                        <!-- Flutter -->
+                        <div class="bg-gray-700 bg-opacity-30 rounded-2xl p-6 flex flex-col items-center">
+                          <img src="img/skill/flutter.svg" alt="Flutter" class="w-16 h-16 mb-4">
+                          <p class="text-black dark:text-white text-xl text-center">Flutter</p>
+                          
+                        <!-- Bintang -->
+                        <div class="flex items-center justify-center mb-2">
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                        </div>
+
+                        <!-- Progress bar -->
+                        <div class="w-full">
+                          <div class="w-full bg-gray-300 rounded-full h-2.5 dark:bg-gray-600">
+                            <div class="bg-emerald-400 h-2.5 rounded-full" style="width: 50%"></div>
+                          </div>
+                          <p class="text-sm text-gray-200 mt-1 text-center">50%</p>
+                        </div>
+                        </div>
+
+                        <!-- Git -->
+                        <div class="bg-gray-700 bg-opacity-30 rounded-2xl p-6 flex flex-col items-center">
+                          <img src="img/skill/git.svg" alt="Git" class="w-16 h-16 mb-4">
+                          <p class="text-black dark:text-white text-xl text-center">Git</p>
+                          
+                        <!-- Bintang -->
+                        <div class="flex items-center justify-center mb-2">
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                        </div>
+
+                        <!-- Progress bar -->
+                        <div class="w-full">
+                          <div class="w-full bg-gray-300 rounded-full h-2.5 dark:bg-gray-600">
+                            <div class="bg-emerald-400 h-2.5 rounded-full" style="width: 90%"></div>
+                          </div>
+                          <p class="text-sm text-gray-200 mt-1 text-center">90%</p>
+                        </div>
+                        </div>
+
+                        <!-- Github -->
+                        <div class="bg-gray-700 bg-opacity-30 rounded-2xl p-6 flex flex-col items-center">
+                          <img src="img/skill/github.svg" alt="Github" class="w-16 h-16 mb-4">
+                          <p class="text-black dark:text-white text-xl text-center">Github</p>
+                          
+                        <!-- Bintang -->
+                        <div class="flex items-center justify-center mb-2">
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                        </div>
+
+                        <!-- Progress bar -->
+                        <div class="w-full">
+                          <div class="w-full bg-gray-300 rounded-full h-2.5 dark:bg-gray-600">
+                            <div class="bg-emerald-400 h-2.5 rounded-full" style="width: 90%"></div>
+                          </div>
+                          <p class="text-sm text-gray-200 mt-1 text-center">90%</p>
+                        </div>
+                        </div>
+
+                        <!-- Gitlab -->
+                        <div class="bg-gray-700 bg-opacity-30 rounded-2xl p-6 flex flex-col items-center">
+                          <img src="img/skill/gitlab.svg" alt="Gitlab" class="w-16 h-16 mb-4">
+                          <p class="text-black dark:text-white text-xl text-center">Gitlab</p>
+                          
+                        <!-- Bintang -->
+                        <div class="flex items-center justify-center mb-2">
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                        </div>
+
+                        <!-- Progress bar -->
+                        <div class="w-full">
+                          <div class="w-full bg-gray-300 rounded-full h-2.5 dark:bg-gray-600">
+                            <div class="bg-emerald-400 h-2.5 rounded-full" style="width: 90%"></div>
+                          </div>
+                          <p class="text-sm text-gray-200 mt-1 text-center">90%</p>
+                        </div>
+                        </div>
+
+                        <!-- HTML -->
+                        <div class="bg-gray-700 bg-opacity-30 rounded-2xl p-6 flex flex-col items-center">
+                          <img src="img/skill/html5.svg" alt="HTML" class="w-16 h-16 mb-4">
+                          <p class="text-black dark:text-white text-xl text-center">HTML</p>
+                          
+                        <!-- Bintang -->
+                        <div class="flex items-center justify-center mb-2">
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                        </div>
+
+                        <!-- Progress bar -->
+                        <div class="w-full">
+                          <div class="w-full bg-gray-300 rounded-full h-2.5 dark:bg-gray-600">
+                            <div class="bg-emerald-400 h-2.5 rounded-full" style="width: 99%"></div>
+                          </div>
+                          <p class="text-sm text-gray-200 mt-1 text-center">99%</p>
+                        </div>
+                        </div>
+
+                        <!-- Laravel -->
+                        <div class="bg-gray-700 bg-opacity-30 rounded-2xl p-6 flex flex-col items-center">
+                          <img src="img/skill/laravel.svg" alt="Laravel" class="w-16 h-16 mb-4">
+                          <p class="text-black dark:text-white text-xl text-center">Laravel</p>
+                          
+                        <!-- Bintang -->
+                        <div class="flex items-center justify-center mb-2">
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                        </div>
+
+                        <!-- Progress bar -->
+                        <div class="w-full">
+                          <div class="w-full bg-gray-300 rounded-full h-2.5 dark:bg-gray-600">
+                            <div class="bg-emerald-400 h-2.5 rounded-full" style="width: 95%"></div>
+                          </div>
+                          <p class="text-sm text-gray-200 mt-1 text-center">95%</p>
+                        </div>
+                        </div>
+
+                        <!-- Mysql -->
+                        <div class="bg-gray-700 bg-opacity-30 rounded-2xl p-6 flex flex-col items-center">
+                          <img src="img/skill/mysql.svg" alt="Mysql" class="w-16 h-16 mb-4">
+                          <p class="text-black dark:text-white text-xl text-center">Mysql</p>
+                          
+                        <!-- Bintang -->
+                        <div class="flex items-center justify-center mb-2">
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                        </div>
+
+                        <!-- Progress bar -->
+                        <div class="w-full">
+                          <div class="w-full bg-gray-300 rounded-full h-2.5 dark:bg-gray-600">
+                            <div class="bg-emerald-400 h-2.5 rounded-full" style="width: 90%"></div>
+                          </div>
+                          <p class="text-sm text-gray-200 mt-1 text-center">90%</p>
+                        </div>
+                        </div>
+
+                        <!-- PHP -->
+                        <div class="bg-gray-700 bg-opacity-30 rounded-2xl p-6 flex flex-col items-center">
+                          <img src="img/skill/php.svg" alt="PHP" class="w-16 h-16 mb-4">
+                          <p class="text-black dark:text-white text-xl text-center">PHP</p>
+                          
+                        <!-- Bintang -->
+                        <div class="flex items-center justify-center mb-2">
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                        </div>
+
+                        <!-- Progress bar -->
+                        <div class="w-full">
+                          <div class="w-full bg-gray-300 rounded-full h-2.5 dark:bg-gray-600">
+                            <div class="bg-emerald-400 h-2.5 rounded-full" style="width: 95%"></div>
+                          </div>
+                          <p class="text-sm text-gray-200 mt-1 text-center">95%</p>
+                        </div>
+                        </div>
+
+                        <!-- Sqlite -->
+                        <div class="bg-gray-700 bg-opacity-30 rounded-2xl p-6 flex flex-col items-center">
+                          <img src="img/skill/sqlite.svg" alt="Sqlite" class="w-16 h-16 mb-4">
+                          <p class="text-black dark:text-white text-xl text-center">Sqlite</p>
+                          
+                        <!-- Bintang -->
+                        <div class="flex items-center justify-center mb-2">
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                        </div>
+
+                        <!-- Progress bar -->
+                        <div class="w-full">
+                          <div class="w-full bg-gray-300 rounded-full h-2.5 dark:bg-gray-600">
+                            <div class="bg-emerald-400 h-2.5 rounded-full" style="width: 90%"></div>
+                          </div>
+                          <p class="text-sm text-gray-200 mt-1 text-center">90%</p>
+                        </div>
+                        </div>
+
+                        <!-- Tailwind -->
+                        <div class="bg-gray-700 bg-opacity-30 rounded-2xl p-6 flex flex-col items-center">
+                          <img src="img/skill/tailwindcss.svg" alt="Tailwind" class="w-16 h-16 mb-4">
+                          <p class="text-black dark:text-white text-xl text-center">Tailwind</p>
+                          
+                        <!-- Bintang -->
+                        <div class="flex items-center justify-center mb-2">
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                        </div>
+
+                        <!-- Progress bar -->
+                        <div class="w-full">
+                          <div class="w-full bg-gray-300 rounded-full h-2.5 dark:bg-gray-600">
+                            <div class="bg-emerald-400 h-2.5 rounded-full" style="width: 95%"></div>
+                          </div>
+                          <p class="text-sm text-gray-200 mt-1 text-center">95%</p>
+                        </div>
+                        </div>
+
+                        <!-- Adobe Illustrator -->
+                        <div class="bg-gray-700 bg-opacity-30 rounded-2xl p-6 flex flex-col items-center">
+                          <img src="img/skill/AI_Logo__Adobe_Illustrator_-removebg-preview.png" alt="Adobe Illustrator"
+                            class="w-16 h-16 mb-4">
+                          <p class="text-black dark:text-white text-xl text-center">Adobe Illustrator</p>
+                          
+                        <!-- Bintang -->
+                        <div class="flex items-center justify-center mb-2">
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                          <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.166 3.593a1 1 0 00.95.69h3.874c.969 0 1.371 1.24.588 1.81l-3.134 2.28a1 1 0 00-.364 1.118l1.166 3.594c.3.921-.755 1.688-1.538 1.118l-3.134-2.28a1 1 0 00-1.176 0l-3.134 2.28c-.783.57-1.838-.197-1.538-1.118l1.166-3.594a1 1 0 00-.364-1.118L2.464 9.02c-.783-.57-.38-1.81.588-1.81h3.874a1 1 0 00.95-.69l1.166-3.593z"/></svg>
+                        </div>
+
+                        <!-- Progress bar -->
+                        <div class="w-full">
+                          <div class="w-full bg-gray-300 rounded-full h-2.5 dark:bg-gray-600">
+                            <div class="bg-emerald-400 h-2.5 rounded-full" style="width: 60%"></div>
+                          </div>
+                          <p class="text-sm text-gray-200 mt-1 text-center">60%</p>
+                        </div>
+                        </div>
+
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                <style>
+                  .scrollbar-hide::-webkit-scrollbar {
+                    display: none;
+                  }
+
+                  .scrollbar-hide {
+                    -ms-overflow-style: none;
+                    /* IE & Edge */
+                    scrollbar-width: none;
+                    /* Firefox */
+                  }
+                </style>
+
+
+              </div>
+            </div>
+          </div>
+        </section>
+        <script>
+          const tabs = document.querySelectorAll('.tab-btn');
+          const contents = document.querySelectorAll('.tab-content');
+
+          tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+              const target = tab.getAttribute('data-tab');
+              const targetContent = document.getElementById(target);
+
+              const isActive = !targetContent.classList.contains('hidden');
+
+              // Sembunyikan semua konten dan hapus highlight dari semua tab
+              contents.forEach(content => content.classList.add('hidden'));
+              tabs.forEach(btn => btn.classList.remove('bg-teal-700'));
+
+              if (!isActive) {
+                targetContent.classList.remove('hidden');
+                tab.classList.add('bg-teal-700');
+              } else {
+                tab.classList.remove('bg-teal-700');
+              }
+            });
+          });
+        </script>
+
+
+
+        <!-- skill Section End -->
+
+        <!-- certificate Section Start -->
+        <section id="certificate" class=" pt-36 pb-32">
+          <div class="container">
+            <div class="w-full px-4">
+              <div class="mx-auto mb-16 max-w-xl text-center">
+                <h2
+                  class="text-3xl font-bold mb-4 bg-gradient-to-r from-lime-400 via-emerald-500 to-teal-600 bg-clip-text text-transparent">
+                  Certificate
+                </h2>
+                <p class="text-md font-medium text-black dark:text-white md:text-lg">This is my learning certificate for the past 1
+                  year, this certificate is proof that I have the skills.</p>
+              </div>
+            </div>
+
+            <!-- Flex Container -->
+            <div class="flex flex-wrap justify-center gap-4">
+              <!-- Kotak Sertifikat 1 -->
+              <div class="certificate-card w-full px-2 md:w-1/2 lg:w-1/3" data-aos="zoom-out-right" data-aos-duration="1000">
+                <div class="mb-10 overflow-hidden rounded-xl bg-slate-800 shadow-lg dark:bg-slate-800">
+                  <div class="relative h-48 w-full">
+                    <img src="img/sertifikat/sertifikat-1.jpg" alt="Sertifikat 1"
+                      class="absolute h-full w-full object-cover" />
+                  </div>
+                  <div class="py-6 px-6">
+                    <h3>
+                      <a href="#"
+                        class="mb-3 block truncate text-3xl bg-gradient-to-r from-lime-400 via-emerald-500 to-teal-600 text-transparent bg-clip-text font-bold">Certificate 1</a>
+                    </h3>
+                    <p class="mb-4 text-base font-medium text-white">Pengenalan Ke Logika Pemprograman (Proggraming Logic 101)</p>
+                    <div class="mt-4 flex justify-between items-center">
+                      <p class="text-sm font-medium text-gray-600 dark:text-gray-400">By Dicoding</p>
+                      <button onclick="viewImage('img/sertifikat/sertifikat-1.jpg')"
+                        class="bg-teal-500 hover:bg-teal-600 cursor-pointer text-white py-2 px-4 rounded-lg hover:opacity-80">View</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Kotak Sertifikat 2 -->
+            <div class="certificate-card w-full px-2 md:w-1/2 lg:w-1/3" data-aos="zoom-out-left" data-aos-duration="1000">
+      <div class="mb-10 overflow-hidden rounded-xl bg-slate-800 shadow-lg ">
+          <div class="relative h-48 w-full">
+      <!-- FOTO Thumbnail sertifikat -->
+      <a href="img/sertifikat/sertifikat-2.jpg" target="_blank">
+        <img src="img/sertifikat/sertifikat-2.jpg" alt="Sertifikat 2"
+          class="absolute h-full w-full object-cover" />
+      </a>
+    </div>
+    <div class="py-6 px-6">
+      <h2
+        class="text-3xl font-bold mb-4 bg-gradient-to-r from-lime-400 via-emerald-500 to-teal-600 bg-clip-text text-transparent">
+        Certificate 2
+      </h2>
+      <p class="mb-4 text-base font-medium text-white">
+      Belajar Dasar Pemrograman Web (Web Programming Basics)</p>
+      </p>
+      <div class="mt-4 flex justify-between items-center">
+        <p class="text-sm font-medium text-gray-600 dark:text-gray-400">By Dicoding</p>
+        <!-- Tombol view (opsional) -->
+        <a href="img/sertifikat/sertifikat2_Ramdona_123_3223198_141124074452.pdf" target="_blank"
+          class="bg-teal-500 hover:bg-teal-600 cursor-pointer text-white py-2 px-4 rounded-lg hover:opacity-80">
+          View
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+              <!-- Kotak Sertifikat 3 -->
+            <div class="certificate-card w-full px-2 md:w-1/2 lg:w-1/3" data-aos="zoom-out-left" data-aos-duration="1000">
+      <div class="mb-10 overflow-hidden rounded-xl shadow-lg bg-slate-800">
+          <div class="relative h-48 w-full">
+      <!-- FOTO Thumbnail sertifikat -->
+      <a href="img/sertifikat/sertifikat-3.jpg" target="_blank">
+        <img src="img/sertifikat/sertifikat-3.jpg" alt="Sertifikat 3"
+          class="absolute h-full w-full object-cover" />
+      </a>
+    </div>
+    <div class="py-6 px-6">
+      <h2
+        class="text-3xl font-bold mb-4 bg-gradient-to-r from-lime-400 via-emerald-500 to-teal-600 bg-clip-text text-transparent">
+        Certificate 3
+      </h2>
+      <p class="mb-4 text-base font-medium text-white">
+      Mastering Solid Principles to Boost Engineering Career</p>
+      </p>
+      <div class="mt-4 flex justify-between items-center">
+        <p class="text-sm font-medium text-gray-600 dark:text-gray-400">By Dicoding</p>
+        <!-- Tombol view (opsional) -->
+        <a href="img/sertifikat/mastering-solid-principles-to-boost-engineering-career-certificate.pdf" target="_blank"
+          class="bg-teal-500 hover:bg-teal-600 cursor-pointer text-white py-2 px-4 rounded-lg hover:opacity-80">
+          View
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+            <script>
+              // Function to handle the image view popup
+              function viewImage(imageSrc) {
+                window.open(imageSrc, "_blank");
+              }
+
+              // Enhanced tilt effect with JavaScript for better control
+              document.addEventListener('DOMContentLoaded', function () {
+                const cards = document.querySelectorAll('.project-card, .certificate-card');
+
+                cards.forEach(card => {
+                  // Mouse move tilt effect
+                  card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const angleX = (y - centerY) / 20;
+                    const angleY = (centerX - x) / 20;
+
+                    card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) scale(1.03)`;
+                  });
+
+                  // Reset on mouse leave
+                  card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+                  });
+
+                  // Click/press effect
+                  card.addEventListener('mousedown', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(10deg) rotateY(10deg) scale(0.98)';
+                  });
+
+                  card.addEventListener('mouseup', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(5deg) rotateY(5deg) scale(1.03)';
+                  });
+                });
+              });
+            </script>
+
+
+          </div>
+        </section>
+
+        <!--Quotes Start-->
+     <section id="quotes" class="pt-8 pb-10" data-aos="fade-down" data-aos-duration="1000">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2
+        class="text-3xl font-bold mb-8 bg-gradient-to-r from-lime-400 via-emerald-500 to-teal-600 bg-clip-text text-transparent">
+        Quotes
+      </h2>
+
+      <!-- Quote box with quote marks in border -->
+      <div class="relative max-w-4xl mx-auto border-2 border-emerald-400 rounded-2xl px-8 py-10">
+        <!-- Left top quote mark -->
+        <span class="absolute -top-6 left-4 text-5xl text-emerald-400 font-serif">“</span>
+
+        <blockquote class="text-2xl md:text-3xl font-semibold text-gray-100 leading-relaxed">
+          Code is the same as life, it doesn't need to be perfect to be valuable.
+          The most important thing is to continue to improve and develop yourself every day.
+        </blockquote>
+
+        <!-- Right bottom quote mark -->
+        <span class="absolute -bottom-6 right-4 text-5xl text-emerald-400 font-serif">”</span>
+
+        <p class="mt-6 text-lg md:text-xl text-sky-400 font-medium">- Ramdona</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- Quotes End -->
+
+        <!-- certificate Section End -->
+
+        <section>
+          <div class="slider-left" data-aos="fade-up" data-aos-duration="1000">
+            <div class="slider-track-left">
+              <!-- Konten Pertama -->
+              <span class="slide mx-4 py-4 hover:scale-125 transition duration-500 lg:mx-6 xl:mx-8"><img
+                  src="img/skill/html5.svg" alt="HTML5" /></span>
+              <span class="slide mx-4 py-4 hover:scale-125 transition duration-500 lg:mx-6 xl:mx-8"><img
+                  src="img/skill/css.svg" alt="CSS" /></span>
+              <span class="slide mx-4 py-4 hover:scale-125 transition duration-500 lg:mx-6 xl:mx-8"><img
+                  src="img/skill/js.svg" alt="JavaScript" /></span>
+              <span class="slide mx-4 py-4 hover:scale-125 transition duration-500 lg:mx-6 xl:mx-8"><img
+                  src="img/skill/php.svg" alt="PHP" /></span>
+              <span class="slide mx-4 py-4 hover:scale-125 transition duration-500 lg:mx-6 xl:mx-8"><img
+                  src="img/skill/tailwindcss.svg" alt="TailwindCSS" /></span>
+              <span class="slide mx-4 py-4 hover:scale-125 transition duration-500 lg:mx-6 xl:mx-8"><img
+                  src="img/skill/bootstrap.svg" alt="Bootstrap 5" /></span>
+              <span class="slide mx-4 py-4 hover:scale-125 transition duration-500 lg:mx-6 xl:mx-8"><img
+                  src="img/skill/laravel.svg" alt="Laravel" /></span>
+              <span class="slide mx-4 py-4 hover:scale-125 transition duration-500 lg:mx-6 xl:mx-8"><img
+                  src="img/skill/vuejs.svg" alt="Vue JS" width="100" /></span>
+
+              <!-- Duplikasi Konten -->
+              <span class="slide mx-4 py-4 hover:scale-125 transition duration-500 lg:mx-6 xl:mx-8"><img
+                  src="img/skill/html5.svg" alt="HTML5" /></span>
+              <span class="slide mx-4 py-4 hover:scale-125 transition duration-500 lg:mx-6 xl:mx-8"><img
+                  src="img/skill/css.svg" alt="CSS" /></span>
+              <span class="slide mx-4 py-4 hover:scale-125 transition duration-500 lg:mx-6 xl:mx-8"><img
+                  src="img/skill/js.svg" alt="JavaScript" /></span>
+              <span class="slide mx-4 py-4 hover:scale-125 transition duration-500 lg:mx-6 xl:mx-8"><img
+                  src="img/skill/php.svg" alt="PHP" /></span>
+              <span class="slide mx-4 py-4 hover:scale-125 transition duration-500 lg:mx-6 xl:mx-8"><img
+                  src="img/skill/tailwindcss.svg" alt="TailwindCSS" /></span>
+              <span class="slide mx-4 py-4 hover:scale-125 transition duration-500 lg:mx-6 xl:mx-8"><img
+                  src="img/skill/bootstrap.svg" alt="Bootstrap 5" /></span>
+              <span class="slide mx-4 py-4 hover:scale-125 transition duration-500 lg:mx-6 xl:mx-8"><img
+                  src="img/skill/laravel.svg" alt="Laravel" /></span>
+              <span class="slide mx-4 py-4 hover:scale-125 transition duration-500 lg:mx-6 xl:mx-8"><img
+                  src="img/skill/vuejs.svg" alt="Vue JS" width="100" /></span>
+            </div>
+          </div>
+
+          <div class="slider-right" data-aos="fade-up" data-aos-duration="1000">
+            <div class="slider-track-right">
+              <!-- Konten Pertama -->
+              <span class="slide mx-4 py-4 hover:scale-125 transition duration-500 lg:mx-6 xl:mx-8"><img
+                  src="img/skill/html5.svg" alt="HTML5" /></span>
+              <span class="slide mx-4 py-4 hover:scale-125 transition duration-500 lg:mx-6 xl:mx-8"><img
+                  src="img/skill/css.svg" alt="CSS" /></span>
+              <span class="slide mx-4 py-4 hover:scale-125 transition duration-500 lg:mx-6 xl:mx-8"><img
+                  src="img/skill/js.svg" alt="JavaScript" /></span>
+              <span class="slide mx-4 py-4 hover:scale-125 transition duration-500 lg:mx-6 xl:mx-8"><img
+                  src="img/skill/php.svg" alt="PHP" /></span>
+              <span class="slide mx-4 py-4 hover:scale-125 transition duration-500 lg:mx-6 xl:mx-8"><img
+                  src="img/skill/tailwindcss.svg" alt="TailwindCSS" /></span>
+              <span class="slide mx-4 py-4 hover:scale-125 transition duration-500 lg:mx-6 xl:mx-8"><img
+                  src="img/skill/bootstrap.svg" alt="Bootstrap 5" /></span>
+              <span class="slide mx-4 py-4 hover:scale-125 transition duration-500 lg:mx-6 xl:mx-8"><img
+                  src="img/skill/laravel.svg" alt="Laravel" /></span>
+              <span class="slide mx-4 py-4 hover:scale-125 transition duration-500 lg:mx-6 xl:mx-8"><img
+                  src="img/skill/vuejs.svg" alt="Vue JS" width="100" /></span>
+
+              <!-- Duplikasi Konten -->
+              <span class="slide mx-4 py-4 hover:scale-125 transition duration-500 lg:mx-6 xl:mx-8"><img
+                  src="img/skill/html5.svg" alt="HTML5" /></span>
+              <span class="slide mx-4 py-4 hover:scale-125 transition duration-500 lg:mx-6 xl:mx-8"><img
+                  src="img/skill/css.svg" alt="CSS" /></span>
+              <span class="slide mx-4 py-4 hover:scale-125 transition duration-500 lg:mx-6 xl:mx-8"><img
+                  src="img/skill/js.svg" alt="JavaScript" /></span>
+              <span class="slide mx-4 py-4 hover:scale-125 transition duration-500 lg:mx-6 xl:mx-8"><img
+                  src="img/skill/php.svg" alt="PHP" /></span>
+              <span class="slide mx-4 py-4 hover:scale-125 transition duration-500 lg:mx-6 xl:mx-8"><img
+                  src="img/skill/tailwindcss.svg" alt="TailwindCSS" /></span>
+              <span class="slide mx-4 py-4 hover:scale-125 transition duration-500 lg:mx-6 xl:mx-8"><img
+                  src="img/skill/bootstrap.svg" alt="Bootstrap 5" /></span>
+              <span class="slide mx-4 py-4 hover:scale-125 transition duration-500 lg:mx-6 xl:mx-8"><img
+                  src="img/skill/laravel.svg" alt="Laravel" /></span>
+              <span class="slide mx-4 py-4 hover:scale-125 transition duration-500 lg:mx-6 xl:mx-8"><img
+                  src="img/skill/vuejs.svg" alt="Vue JS" width="100" /></span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contact Section Start -->
+        <section id="contact" class="pt-8 pb-10">
+          <div class="container">
+            <!-- Header Section -->
+            <div class="w-full px-4">
+              <div class="mx-auto mb-16 max-w-xl text-center">
+                <h2
+                  class="text-3xl font-bold mb-4 bg-gradient-to-r from-lime-400 via-emerald-500 to-teal-600 bg-clip-text text-transparent">
+                  Contact Me
+                </h2>
+                <p class="text-md font-medium text-white md:text-lg">Any message for me? Let's express it</p>
+              </div>
+            </div>
+
+            <!-- Form Section -->
+            <form id="contact-form" action="" method="POST" enctype="multipart/form-data">
+              <div class="w-full lg:mx-auto lg:w-2/3">
+                <!-- Name Field -->
+                <div class="mb-8 w-full px-4" data-aos="fade-left" data-aos-duration="1000">
+                  <label for="name" class="text-base font-bold text-white">Name</label>
+                  <input type="text" id="name" name="name"
+                    class="w-full rounded-md bg-slate-200 p-3 text-dark focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" />
+                </div>
+                <!-- Email Field -->
+                <div class="mb-8 w-full px-4" data-aos="fade-right" data-aos-duration="1000">
+                  <label for="email" class="text-base font-bold text-white">Email</label>
+                  <input type="email" id="email" name="email"
+                    class="w-full rounded-md bg-slate-200 p-3 text-dark focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" />
+                </div>
+                <!-- Message Field -->
+                <div class="mb-8 w-full px-4" data-aos="fade-left" data-aos-duration="1000">
+                  <label for="message" class="text-base font-bold text-white">Pesan</label>
+                  <textarea id="message" name="message"
+                    class="h-32 w-full rounded-md bg-slate-200 p-3 text-dark focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"></textarea>
+                </div>
+                <!-- Submit Button -->
+                <div class="w-full px-4" data-aos="flip-up" data-aos-duration="1000">
+                  <!-- Tombol Submit yang mengarah ke #home -->
+                  <button type="submit"
+                    class="w-full block text-center rounded-full py-3 px-8 text-base text-white font-bold bg-teal-600 hover:bg-teal-700 transition duration-500 hover:opacity-80 hover:shadow-lg cursor-pointer">
+                    Submit
+                  </button>
+                </div>
+
+              </div>
+          </div>
+          </form>
+      </div>
+    </section>
+    <!-- Contact Section End -->
+
+    <!--footer start-->
+   <section class="text-white">
+  <footer class="max-w-7xl mx-auto px-5 py-12"
+    data-aos="fade-up"
+    data-aos-duration="1000"
+    data-aos-delay="200"
+  >
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-10">
+      <!-- Kiri: Menu & Social -->
+      <div>
+        <h4 class="text-xl font-bold mb-4" data-aos="fade-right" data-aos-delay="300">Portfolio</h4>
+        <div class="flex flex-col md:flex-row md:items-center gap-6">
+          <!-- Menu -->
+          <div data-aos="fade-up" data-aos-delay="400">
+            <h5 class="font-semibold mb-2">Menu</h5>
+            <ul class="text-sm text-slate-300 space-y-1">
+              <li><a href="#about" class="hover:text-gray-400">About</a></li>
+              <li><a href="#project" class="hover:text-gray-400">Project</a></li>
+              <li><a href="#skill" class="hover:text-gray-400">Skill</a></li>
+              <li><a href="#certificate" class="hover:text-gray-400">Certificate</a></li>
+              <li><a href="#contact" class="hover:text-gray-400">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Sosial Media -->
+          <div data-aos="fade-up" data-aos-delay="500">
+            <h5 class="font-semibold mb-2">Follow Me</h5>
+            <div class="flex space-x-3 text-xl text-gray-400">
+              <a href="#" class="hover:text-[#9b4dca]"><i class='bx bxl-instagram'></i></a>
+              <a href="#" class="hover:text-[#9b4dca]"><i class='bx bxl-facebook'></i></a>
+              <a href="#" class="hover:text-[#9b4dca]"><i class='bx bxl-twitter'></i></a>
+              <a href="#" class="hover:text-[#9b4dca]"><i class='bx bxl-linkedin'></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kanan: Powered by -->
+      <div class="text-center md:text-right" data-aos="fade-left" data-aos-delay="600">
+        <h5 class="font-semibold mb-2">Powered by</h5>
+        <a href="https://tailwindcss.com" target="_blank" class="inline-flex items-center gap-2">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" alt="Tailwind Logo"
+            class="w-6 h-6" />
+          <span class="text-sm text-slate-300">Tailwind CSS</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Garis dan Copyright -->
+    <div class="border-t border-slate-700 mt-8 pt-4 text-center text-sm text-slate-400">
+      &copy; 2025 ramdona Portfolio. All rights reserved.
+    </div>
+  </footer>
+</section>
+
+
+    <button id="backToTop"
+      class="hidden fixed bottom-4 right-4 bg-blue-500 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition duration-200 z-50 cursor-pointer">
+      <i class="fas fa-arrow-up text-xl"></i>
+    </button>
+
+  </main>
+  <style>
+    /* Ini opsional kalau mau pastiin tombol hidden awalnya */
+    #backToTop {
+      display: none;
+    }
+  </style>
+
+  <script>
+    const backToTopBtn = document.getElementById("backToTop");
+
+    // Muncul setelah scroll 100px (2 kali scroll mouse kira-kira)
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 100) {
+        backToTopBtn.style.display = "block";
+      } else {
+        backToTopBtn.style.display = "none";
+      }
+    });
+
+    // Scroll smooth ke atas saat tombol diklik
+    backToTopBtn.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+  </script>
+
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    (function () {
+      emailjs.init("ZZP8xCZ7G138z0x-X"); // Ganti dengan public key kamu
+    })();
+  </script>
+
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function (e) {
+      e.preventDefault(); // Mencegah reload halaman
+
+      emailjs.sendForm('service_i38kgzv', 'template_mn5l853', this)
+        .then(function () {
+          Swal.fire({
+            icon: 'success',
+            title: 'Message Delivered!',
+            text: 'Thank you for taking the time to view my portfolio. I hope my works leave a good impression!',
+            confirmButtonColor: '#3085d6',
+          });
+        }, function (error) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Terjadi kesalahan saat mengirim pesan: ' + error.text,
+            confirmButtonColor: '#d33',
+          });
+        });
+
+      this.reset(); // Reset form setelah kirim
+    });
+
+  </script>
+
+
+  <!-- <script src="js/klik.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+<script src="js/gretting.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/scroll.js"></script>
+  <script src="app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="js/darkmood.js"></script>
+  <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+
+  <script>
+    const app = document.getElementById('typewriter');
+
+    const typewriter = new Typewriter(app, {
+      loop: true,
+      delay: 75,
+    });
+
+    typewriter
+      .typeString('Front-End Developer')
+      .pauseFor(1500)
+      .deleteAll()
+      .typeString('Back-End Developer')
+      .pauseFor(1500)
+      .deleteAll()
+      .typeString('UI/UX Design')
+      .pauseFor(1500)
+      .deleteAll()
+      .typeString('Data Analyst')
+      .pauseFor(1500)
+      .deleteAll()
+      .typeString('Graphic Design')
+      .pauseFor(1500)
+      .deleteAll()
+      .typeString('Pixel Artist')
+      .pauseFor(1500)
+      .deleteAll()
+      .start();
+  </script>
+
+
+</body>
+
+</html>

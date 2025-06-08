@@ -1,0 +1,9 @@
+{
+  "particles": {
+    "number": { "value": 50 },
+    "color": { "value": "#00ffb3" },
+    "size": { "value": 3 },
+    "move": { "enable": true, "speed": 1 },
+    "line_linked": { "enable": false }
+  }
+}
